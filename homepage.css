@@ -1,0 +1,439 @@
+a {
+    font-family: broken-planetbold;
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+/* texts are hidden but readable for screenreaders */
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* positioning & styling logo image */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 1em;
+    z-index: 1;
+}
+
+main {
+    position: relative;
+    z-index: 2;
+    margin-top: 5em; 
+}
+
+header img:nth-of-type(1) {
+    display: inline-block;
+    width: 2.25em;
+    cursor: pointer;
+}
+
+/* styling clothing items */
+main ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto; 
+    gap: 1em;
+    padding: 0;
+    margin: 0;
+}
+
+/* mobiel */
+@media (max-width: 38em) {
+    main ul {
+        grid-template-columns: 1fr 1fr;
+    }
+    main ul li img {
+        width: 100%; 
+        margin: 0 auto;
+        max-width: 12em; 
+    }
+}
+
+/* tablet- en mobiel */
+@media (min-width: 38em) {
+    main ul {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    main ul li img {
+        width: 100%; 
+        margin: 0 auto; 
+        max-width: 16em; 
+    }
+}
+
+/* laptop */
+@media (min-width: 44em) {
+    main ul {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+    main ul li img {
+        width: 100%; 
+        margin: 0 auto; 
+        max-width: 18em; 
+    }
+}
+
+/* desktop) */
+@media (min-width: 64em) {
+    main ul {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+    main ul li img {
+        width: 100%; 
+        margin: 0 auto; 
+        max-width: 20em; 
+    }
+}
+
+/* positioning & styling hamburger menu */
+nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fbf7f5;
+    list-style: none;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+
+    /* animation hamburger menu */
+    transform: translateY(100%);
+    transition: transform 0.2s ease, opacity 0.2s ease, visibility 0.2s ease;
+}
+
+nav ul.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* styling text hamburger menu */
+nav ul li a {
+    color: rgb(134, 134, 134);
+    text-decoration: none;
+    font-size: 1em;
+    line-height: 3em;
+    letter-spacing: 0.0094em;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+nav ul li a:hover {
+    color: rgb(91, 91, 91);
+}
+
+/* button hamburger menu */
+header nav button {
+    position: fixed;
+    bottom: 1em;
+    left: 0.5em;
+    width: 5em;
+    margin-top: 64em;
+    border: none;
+    font-size: 1em;
+    display: grid;
+    place-items: center;
+    z-index: 2;
+    background-color: transparent;
+    
+}
+
+header nav button span {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    width: 3em;
+    height: 0.125em;
+    background-color: black;
+    transition: 0.5s;
+    display: block;
+}
+
+/* animation open/close hamburger menu */
+header nav button span:nth-of-type(1) {
+    transform: translate(0, -1em);
+}
+
+header nav button span:nth-of-type(2) {
+    transform: translate(0);
+}
+
+header nav button span:nth-of-type(3) {
+    transform: translate(0, 1em);
+}
+
+header nav button.open span:nth-of-type(1) {
+    transform: translate(0, 0) rotate(45deg);
+}
+
+header nav button.open span:nth-of-type(2) {
+    transform: scale(0, 1);
+}
+
+header nav button.open span:nth-of-type(3) {
+    transform: translate(0, 0) rotate(-45deg);
+}
+
+/* laptop size */
+@media (min-width: 64em) {
+    header nav button {
+        display: none;
+    }
+
+    nav ul {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        background-color: transparent;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin-bottom: 0.8em;
+        right: 3em;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+        color: rgb(134, 134, 134);
+        line-height: 3.5em;
+        letter-spacing: 0.0094em;
+    }
+
+    header img:nth-of-type(1) {
+        width: 3em;
+    }
+}
+
+/* cart button */
+header button:nth-of-type(1) {
+    font-family: broken-planetbold;
+    color: var(--color-text);
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 1em;
+    position: absolute;
+    right: 1em;
+    top: 2em;
+    z-index: 10;
+}
+
+header button:nth-of-type(1):hover {
+    color: grey;
+}
+
+main ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* styling reload icon */
+main ul li a:nth-of-type(2) img {
+    width: 1.8em;
+    margin: 0 auto; 
+    cursor: pointer;
+    position: absolute;
+    top: 10%; 
+    opacity: 0.7;
+    z-index: 10; 
+    transition: all 0.3s ease; 
+}
+
+main ul li p:nth-of-type(1) {
+    text-align: center;
+    font-family: broken-planetregular;
+}
+
+main ul li p:nth-of-type(2) {
+    font-family: broken-planetthin;
+    text-align: center;
+}
+
+main section p:nth-of-type(1) {
+    text-align: center;
+    font-family: broken-planetregular;
+    text-transform: uppercase;
+    margin-top: 7em;
+    font-size: 0.875em;
+    letter-spacing: 0.009375em;
+}
+
+/* styling tiktok icon */
+nav ul li img:nth-of-type(1) {
+    position: fixed;
+    bottom: 1.4em;
+    right: 13.5em;
+    width: 2em;
+    cursor: pointer;
+}
+
+/* styling instagram icon */
+nav ul li img:nth-of-type(2) {
+    position: fixed;
+    bottom: 1.4em;
+    right: 9.5em;
+    width: 2em;
+    cursor: pointer;
+}
+
+/* styling pinterest icon */
+nav ul li img:nth-of-type(3) {
+    position: fixed;
+    bottom: 1.4em;
+    right: 5.5em;
+    width: 2em;
+    cursor: pointer;
+}
+
+/* styling mail icon */
+nav ul li img:nth-of-type(4) {
+    position: fixed;
+    bottom: 1em;
+    right: 2em;
+    width: 2em;
+    cursor: pointer;
+}
+
+nav ul li img:hover {
+    opacity: 0.6;
+}
+
+/* reload button */
+li {
+    display: grid;
+    grid-template-rows: auto auto;
+    position: relative;
+}
+
+li img {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    width: 20em;
+}
+
+li img:nth-of-type(1):not(label > img) {
+    opacity: 1;
+    display: block;
+}
+
+li img:nth-of-type(2):not(label > img) {
+    opacity: 1;
+    display: none;
+}
+
+li:has(:checked) img:nth-of-type(1):not(label > img) {
+    opacity: 0;
+    display: none;
+}
+
+li:has(:checked) img:nth-of-type(2):not(label > img) {
+    opacity: 1;
+    display: block;
+}
+
+li label {
+    justify-self: center;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+    position: absolute;
+    top: 2em;
+    left: 15em;
+    z-index: 1;
+}
+
+li input {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background-color: transparent;
+    appearance: none;
+}
+
+li label img {
+    width: 2em;
+}
+
+li label img:hover {
+    opacity: 0.4;
+}
+
+/* footer positioning & styling */
+footer ul {
+    list-style: none;
+}
+
+/* footer styling & positioning tiktok icon */
+footer ul li a:nth-of-type(1) img {
+    position: fixed;
+    bottom: 1.4em;
+    right: 13.5em;
+    width: 2em;
+    cursor: pointer;
+}
+
+/* footer styling & positioning instagram icon */
+footer ul li a:nth-of-type(2) img {
+    position: fixed;
+    bottom: 1.4em;
+    right: 9.5em;
+    width: 2em;
+    cursor: pointer;
+}
+
+/* footer styling & positioning pinterest icon */
+footer ul li a:nth-of-type(3) img {
+    position: fixed;
+    bottom: 1.4em;
+    right: 5.5em;
+    width: 2em;
+    cursor: pointer;
+}
+
+/* footer styling & positioning mail icon */
+footer ul li a:nth-of-type(4) img {
+    position: fixed;
+    bottom: 1em;
+    right: 2em;
+    width: 2em;
+    cursor: pointer;
+}
+
+footer ul li img:hover {
+    opacity: 0.6;
+}

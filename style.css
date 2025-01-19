@@ -1,0 +1,89 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-text: #111;
+    --color-background: #fbf7f5;
+}
+
+/* light theme */
+body:has(input[name="moon"][value="light"]:checked) {
+    --color-text: #222;
+    --color-background: #fbf7f5;
+}
+
+/* dark theme */
+body:has(input[name="moon"][value="dark"]:checked) {
+    --color-text: #fbf7f5;
+    --color-background: #222;
+}
+
+/* positioning sun icon */
+header label:nth-of-type(1) {
+   position: fixed;
+   display: flex;
+   justify-content: flex-end; 
+   align-items: center;
+   cursor: pointer;
+   top: 1em;
+   right: 8em;
+}
+
+/* positioning moon icon */
+header label:nth-of-type(2) {
+    position: fixed;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+	cursor: pointer;
+    top: 1em;
+    right: 5em;
+}
+
+/* styling dark/light icon */
+label img:nth-of-type(1) {
+    width: 2em;
+}
+
+label input[type="radio"]:not(:checked) + img {
+    opacity: 0.5; 
+    transform: scale(0.9); 
+}
+
+/* radio buttons hidden */
+label input[type="radio"] {
+    display: none;
+}
+
+/* fonts */
+@font-face {
+    font-family: broken-planetregular;
+    src: url(../fonts/HalvarBreit-Rg.ttf);
+}
+
+@font-face {
+    font-family: broken-planetbold;
+    src: url(../fonts/HalvarBreit-Bd.ttf);
+}
+
+@font-face {
+    font-family: broken-planetthin;
+    src: url(../fonts/HalvarBreit-Th.ttf);
+}
+
+/* general styles */
+body {
+    margin: 0;
+    height: 100dvh;
+    display: grid;
+    place-items: center;
+    font-family: broken-planetregular;
+
+    color: var(--color-text);
+    background-color: var(--color-background);
+    transition: background-color 0.3s, color 0.3s;
+}
+
